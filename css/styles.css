@@ -108,6 +108,9 @@ body {
   color: #404bbf;
 }
 
+.underlining {
+  color: #404bbf;
+}
 .underlining::after {
   position: absolute;
   content: '';
@@ -116,6 +119,7 @@ body {
   width: 100%;
   height: 4px;
   left: 0px;
+  bottom: -1px;
   background: #404bbf;
   border-radius: 2px;
 }
@@ -505,9 +509,9 @@ body {
   color: var(--color-button-portfolio);
   background-color: var(--background-color-button-portfolio);
 
-  transition-property: border, color, background-color, box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-portfolio:hover,
@@ -562,9 +566,7 @@ body {
 }
 
 .overlay-portfolio {
-  padding-top: 40px;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding: 40px 32px;
   position: absolute;
   top: 0;
   left: 0;
@@ -606,9 +608,12 @@ body {
   visibility: visible;
   pointer-events: auto;
 
-  transition-property: opacity, visibility, scale;
+  /* transition-property: opacity, visibility, scale;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); */
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal {
@@ -617,14 +622,17 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 408px;
-  height: 584px;
+  min-height: 576px;
   background-color: #fcfcfc;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-close {
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   fill: #2e2f42;
 }
 
@@ -637,13 +645,28 @@ body {
   top: 24px;
   width: 24px;
   height: 24px;
+
+  padding: 0;
   background: #e7e9fc;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-close-modal:hover,
+.button-close-modal:focus {
+  background-color: #404bbf;
+  border: none;
+}
+
+.button-close-modal:hover .icon-close,
+.button-close-modal:focus .icon-close {
+  fill: #ffffff;
 }
 
 .is-hidden {
-  scale: 90%;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
